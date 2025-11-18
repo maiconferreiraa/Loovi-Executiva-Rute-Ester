@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executiva Rute Ester - Proteção Veicular Loovi</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ---------------------------------------------
+        CORES E CONFIGURAÇÕES BASE
+        ---------------------------------------------
+        */
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333; 
+            line-height: 1.6;
+            background-color: #f7f9fb; /* Fundo suave */
+        }
+
+        :root {
+            --cor-principal-lovi: #002347; 
+            --cor-destaque-lovi: #00C4FF; 
+            --cor-whatsapp: #00E676; /* Verde Brilhante */
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: var(--cor-principal-lovi);
+            font-weight: 800; 
+        }
+
+        /* CLASSE DE FAIXA AZUL (bg-dark-lovi) */
+        .bg-dark-lovi {
+            background-color: var(--cor-principal-lovi) !important;
+            color: #FFF;
+        }
+        .bg-dark-lovi h2, .bg-dark-lovi h4 {
+            color: #FFF !important;
+        }
+        .bg-dark-lovi .text-muted, .bg-dark-lovi p {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+        
+        /* ---------------------------------------------
+           ESTILOS GERAIS
+        --------------------------------------------- */
+        .btn-primary {
+            background-color: var(--cor-destaque-lovi);
+            border-color: var(--cor-destaque-lovi);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px; 
+            box-shadow: 0 5px 15px rgba(0, 196, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: #00A3D9; 
+            border-color: #00A3D9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 196, 255, 0.5); 
+        }
+        .text-primary, .text-destaque {
+            color: var(--cor-destaque-lovi) !important;
+        }
+
+        /* ---------------------------------------------
+           NAVBAR
+        --------------------------------------------- */
+        .navbar {
+            background-color: var(--cor-principal-lovi) !important; 
+            border-bottom: 4px solid var(--cor-destaque-lovi); 
+        }
+        .navbar-nav .nav-link {
+            color: #FFF !important;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            color: var(--cor-destaque-lovi) !important;
+            transform: translateY(-1px);
+        }
+        
+        /* ---------------------------------------------
+           ANIMAÇÕES WHATSAPP E BOTÕES (FORÇADO)
+        --------------------------------------------- */
+        @keyframes pulse-whatsapp {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 18px rgba(0, 230, 118, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+        }
+
+        .btn-whatsapp-nav {
+            background-color: var(--cor-whatsapp) !important;
+            color: #FFF;
+            font-weight: 600;
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            box-shadow: 0 5px 15px rgba(0, 230, 118, 0.5) !important;
+            animation: pulse-whatsapp 2s infinite !important;
+        }
+        
+        /* HERO BUTTON (FALAR COM RUTE ESTER) - TAMANHO REDUZIDO */
+        .btn-whatsapp-main {
+            background-color: var(--cor-whatsapp) !important;
+            border-color: var(--cor-whatsapp) !important;
+            color: #FFF;
+            font-weight: 700;
+            padding: 0.8rem 2rem; 
+            font-size: 1.1rem;
+            border-radius: 50px; 
+            box-shadow: 0 15px 40px rgba(0, 230, 118, 0.8) !important;
+            animation: pulse-whatsapp 2s infinite !important;
+        }
+        
+        .btn-whatsapp-nav:hover, .btn-whatsapp-main:hover {
+            animation: none !important;
+            background-color: #00CC6A !important;
+            transform: scale(1.05) !important;
+        }
+
+        /* ---------------------------------------------
+           SEÇÃO HERO (TÍTULO)
+        --------------------------------------------- */
+        .hero-section {
+            padding: 10rem 0 8rem;
+            background: url('img/background-pattern.svg') no-repeat center center/cover, #f7f9fb; 
+        }
+        .hero-title {
+            font-size: 3.8rem;
+            line-height: 1.1;
+            white-space: normal;
+        }
+        @media (max-width: 767.98px) { 
+            .hero-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        /* ---------------------------------------------
+           SEÇÃO PROTEÇÕES E DIFERENCIAIS (CONTRASTE)
+        --------------------------------------------- */
+        #protecao, #diferenciais {
+            padding: 5rem 0; 
+        }
+        .card-feature {
+            border-radius: 15px;
+            border: none;
+            background-color: #FFF;
+            box-shadow: 0 15px 35px rgba(0, 35, 71, 0.08); 
+            transition: all 0.4s ease;
+            padding: 2rem;
+        }
+
+        .card-feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 35, 71, 0.12); 
+            border-bottom: 4px solid var(--cor-destaque-lovi); 
+        }
+
+        .card-feature i {
+            background: linear-gradient(45deg, var(--cor-destaque-lovi), #007ACC); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        .card-feature h5, .card-feature p {
+            color: var(--cor-principal-lovi);
+        }
+
+        /* ---------------------------------------------
+           SEÇÃO DE PROCESSO
+        --------------------------------------------- */
+        #processo {
+            background-color: #FFF;
+        }
+        .process-step {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        .process-step .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background-color: var(--cor-destaque-lovi);
+            color: #FFF;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 196, 255, 0.3);
+        }
+        .process-line {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            right: -50%;
+            height: 3px;
+            background-color: #e0e0e0;
+            z-index: 1;
+        }
+        .process-step:last-child .process-line {
+            display: none;
+        }
+        @media (max-width: 991px) {
+            .process-line {
+                display: none !important;
+            }
+        }
+
+
+        /* ---------------------------------------------
+           SEÇÃO CTA FINAL
+        --------------------------------------------- */
+        .cta-section {
+            background: linear-gradient(100deg, var(--cor-principal-lovi) 0%, #00458a 100%); 
+            padding: 6rem 0;
+        }
+        .btn-whatsapp-final {
+            background-color: #FFF;
+            color: var(--cor-principal-lovi);
+            font-weight: 700;
+            padding: 0.8rem 2rem; 
+            font-size: 1.1rem;
+            
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            animation: pulse-whatsapp-final 2s infinite; 
+        }
+        .btn-whatsapp-final:hover {
+            background-color: var(--cor-destaque-lovi);
+            color: #FFF;
+            box-shadow: 0 10px 20px rgba(0, 196, 255, 0.5);
+            transform: scale(1.05);
+            animation: none;
+        }
+        @keyframes pulse-whatsapp-final {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+
+
+        /* ---------------------------------------------
+           RODAPÉ (CORREÇÃO FORÇADA)
+        --------------------------------------------- */
+        footer {
+            background-color: #001A33 !important;
+            border-top: 2px solid var(--cor-destaque-lovi);
+            color: #FFF !important;
+            padding: 2rem 0;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="img/logo1.png" alt="Executiva Rute Ester Loovi" height="45"> 
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#protecao">Coberturas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#processo">Como Funciona</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#diferenciais">Diferenciais</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+                <a href="httpsa://wa.me/553197656684?text=Olá%20Rute!%20Gostaria%20de%20uma%20cotação%20para%20proteção%20veicular." target="_blank" class="btn btn-whatsapp-nav ms-lg-3">
+                    <i class="bi bi-whatsapp me-2"></i>Cotação Rápida
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 text-center text-lg-start">
+                    <h1 class="display-6 fw-bolder hero-title">A Nova Era da <span class="text-destaque">Proteção Veicular</span> Chegou.</h1>
+                    <p class="lead my-4 text-muted">Atendimento personalizado e simplificado com a Executiva Rute Ester.</p>
+                    <p class="lead fw-light">Sua cotação é feita diretamente comigo, sem robôs, com a garantia e qualidade da plataforma Loovi.</p>
+                    
+                    <a href="httpsa://wa.me/553197656684?text=Olá%20Rute!%20Quero%20cotar%20a%20proteção%20do%20meu%20carro%20pelo%20WhatsApp." target="_blank" class="btn btn-whatsapp-main mt-4">
+                        <i class="bi bi-whatsapp me-2"></i> FALAR COM RUTE ESTER
+                    </a>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block">
+                    <img src="img/CARRO.webp" alt="Ilustração de Carro Protegido" style="max-width: 90%;">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="sobre" class="py-5 bg-white shadow-sm">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 text-center">
+                    <img src="img/rute.jpeg" class="img-fluid profile-photo shadow" alt="Executiva Rute Ester Loovi" style="max-width: 250px;">
+                </div>
+                <div class="col-lg-7 mt-4 mt-lg-0">
+                    <h2 class="fw-bold"><i class="bi bi-person-check-fill text-destaque me-2"></i>Eu sou a Executiva Rute Ester.</h2>
+                    <p class="lead">Sua consultora direta para a proteção veicular inteligente da Loovi.</p>
+                    <p>Meu papel é ser a ponte entre você e a proteção ideal. Esqueça a burocracia das intermediárias tradicionais. Aqui, você tem um contato direto e um serviço totalmente focado em oferecer a melhor experiência Loovi. Confie em quem entende de proteção e de atendimento de excelência.</p>
+                    <a href="httpsa://wa.me/553197656684?text=Rute!%20Gostaria%20de%20saber%20mais%20sobre%20você%20e%20a%20Loovi." class="btn btn-primary mt-3" target="_blank">Fale Diretamente Comigo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="protecao" class="py-5 bg-dark-lovi">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bolder">As coberturas essenciais da <span class="text-destaque">Loovi</span></h2>
+                <p class="lead text-muted">Clique nos títulos para ver os detalhes completos de cada proteção.</p>
+            </div>
+            
+            <div class="accordion accordion-flush" id="accordionCoberturas">
+
+                <div class="accordion-item shadow mb-3">
+    <h2 class="accordion-header">
+        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            Roubo e Furto
+        </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionCoberturas">
+        <div class="accordion-body">
+            Cobrimos até 100% do valor do seu carro na tabela FIPE em casos de:
+            <ul>
+                <li>Roubo</li>
+                <li>Furto</li>
+            </ul>
+            * Seguros garantidos pela LTI Seguros S.A., uma empresa do Grupo Loovi
+        </div>
+    </div>
+</div>
+                <div class="accordion-item shadow mb-3">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Assistência 24h
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionCoberturas">
+                        <div class="accordion-body">
+                            <p>Assistência 24h completa via 0800 em todo o território nacional, contendo:</p>
+                            <ul>
+                                <li>Reboque</li>
+                                <li>Hotel para até 5 pessoas</li>
+                                <li>Chaveiro</li>
+                                <li>Assistência para pane elétrica</li>
+                                <li>Assistência para pane mecânica</li>
+                                <li>Auxílio na falta de combustível</li>
+                                <li>Táxi ou transporte alternativo</li>
+                                <li>Troca de pneus</li>
+                                <li>Recarga de bateria</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item shadow mb-3">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Carro Reserva
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionCoberturas">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Carro reserva por 7 dias em caso de colisão, incêndio, roubo ou furto.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item shadow mb-3">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Colisão e Fenômenos da Natureza
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionCoberturas">
+                        <div class="accordion-body">
+                            <h5 class="fw-bold">Cobertura contra Colisão:</h5>
+                            <ul>
+                                <li>Pagamento integral ou parcial em caso de colisão</li>
+                                <li>Alagamento</li>
+                                <li>Granizo</li>
+                                <li>Queda de árvore e suas consequências</li>
+                            </ul>
+                            
+                            <h5 class="fw-bold mt-4">Franquia Reduzida:</h5>
+                            <p>O valor da franquia depende do tipo de veículo:</p>
+                            <ul>
+                                <li><strong>VEÍCULOS DE PASSEIO:</strong> 5% da Fipe (mínimo R$2.500,00)</li>
+                                <li><strong>VEÍCULOS DIFERENCIADOS:</strong> 8% da Fipe (mínimo R$3.500,00)</li>
+                                <li><strong>VEÍCULOS IMPORTADOS:</strong> 10% da Fipe (mínimo R$5.000,00)</li>
+                            </ul>
+                            <p class="small mt-3"><em>* Seguros garantidos pela LTI Seguros S.A., uma empresa do Grupo Loovi</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item shadow mb-3">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Danos a Terceiros
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionCoberturas">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Danos materiais</li>
+                                <li>Danos corporais</li>
+                                <li>Reparo ou indenização em até R$100.000,00</li>
+                            </ul>
+                            <p class="small mt-3"><em>* Seguros garantidos pela LTI Seguros S.A., uma empresa do Grupo Loovi</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item shadow mb-3">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            Seguros Acidentes Pessoais a Passageiros (APP)
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionCoberturas">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Indenização de R$10.000,00 em caso se morte ou invalidez</li>
+                                <li>Reembolso de despesas hospitalares até R$3.000,00</li>
+                            </ul>
+                            <p class="small mt-3"><em>* Seguros garantidos pela LTI Seguros S.A., uma empresa do Grupo Loovi</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item shadow">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                            Vidros Completo
+                        </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionCoberturas">
+                        <div class="accordion-body">
+                            <p>Troca ou reparo de:</p>
+                            <ul>
+                                <li>Vidros laterais</li>
+                                <li>Vidro traseiro</li>
+                                <li>Para-brisa</li>
+                                <li>Retrovisores</li>
+                                <li>Lanternas</li>
+                                <li>Faróis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            </div>
+    </section>
+
+    <section id="processo" class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bolder">O caminho mais rápido para sua <span class="text-destaque">Proteção</span></h2>
+                <p class="lead text-muted">Apenas 3 passos para você sair tranquilo e protegido.</p>
+            </div>
+            <div class="row justify-content-center">
+                
+                <div class="col-lg-3 col-md-6 process-step">
+                    <div class="icon-wrapper">
+                        <i class="bi bi-whatsapp"></i>
+                    </div>
+                    <h4 class="mt-3">1. Contato Direto</h4>
+                    <p class="text-muted small">Você me chama no WhatsApp. Recebo seus dados e a informação do veículo.</p>
+                    <div class="process-line d-none d-lg-block"></div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 process-step">
+                    <div class="icon-wrapper">
+                        <i class="bi bi-file-earmark-text"></i>
+                    </div>
+                    <h4 class="mt-3">2. Cotação Personalizada</h4>
+                    <p class="text-muted small">Eu monto a proposta Loovi ideal para você, com foco no melhor custo-benefício.</p>
+                    <div class="process-line d-none d-lg-block"></div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 process-step">
+                    <div class="icon-wrapper">
+                        <i class="bi bi-lock-fill"></i>
+                    </div>
+                    <h4 class="mt-3">3. Proteção Ativada</h4>
+                    <p class="text-muted small">Com a aprovação, ativamos o serviço e você sai protegido pela tecnologia Loovi.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <section id="diferenciais" class="py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="fw-bolder mb-5">Por que a <span class="text-destaque">Loovi</span> está conquistando o Brasil?</h2>
+            
+            <div class="row g-4">
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-feature h-100 text-center">
+                        <i class="bi bi-credit-card-2-back"></i>
+                        <h4 class="mt-3">Pagamento Flexível</h4>
+                        <p class="text-muted">Mês a mês, sem comprometer seu limite. Simples e leve, igual Netflix.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-feature h-100 text-center">
+                        <i class="bi bi-person-x-fill"></i>
+                        <h4 class="mt-3">Sem Análise de Perfil</h4>
+                        <p class="text-muted">Não nos importamos com quem vai dirigir ou onde mora: o valor não muda.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-feature h-100 text-center">
+                        <i class="bi bi-calendar-check"></i>
+                        <h4 class="mt-3">Carros a Partir de 1986</h4>
+                        <p class="text-muted">Aceitamos veículos mais antigos, a partir do ano de fabricação 1986.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-feature h-100 text-center">
+                        <i class="bi bi-car-front-fill"></i>
+                        <h4 class="mt-3">100% FIPE para APP/Táxi</h4>
+                        <p class="text-muted">Indenização de 100% da Tabela FIPE para veículos de aplicativo e táxi em caso de acidente.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-feature h-100 text-center">
+                        <i class="bi bi-ev-front-fill"></i>
+                        <h4 class="mt-3">Híbridos e Elétricos</h4>
+                        <p class="text-muted">Cobertura para o futuro: aceitamos veículos híbridos e elétricos.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-feature h-100 text-center">
+                        <i class="bi bi-gear-wide-connected"></i>
+                        <h4 class="mt-3">Modificados e Leilão</h4>
+                        <p class="text-muted">Aceitamos carros modificados, tunados e também aqueles adquiridos em leilão.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-5 cta-section text-white">
+    <div class="container text-center">
+        <h2 class="display-5 fw-bold mb-3 text-white">Quer saber quanto custa proteger seu carro?</h2>
+        <p class="lead mb-4">Me envie uma mensagem agora e receba um orçamento sem compromisso.</p>
+        <a href="httpsa://wa.me/553197656684?text=Olá%20Rute!%20Quero%20cotar%20a%20proteção%20do%20meu%20carro%20pelo%20WhatsApp." target="_blank" class="btn btn-whatsapp-final shadow-lg">
+<i class="bi bi-whatsapp me-2"></i> FALAR COM RUTE ESTER
+</a>
+    </div>
+</section>
+
+    <footer class="py-4" style="background-color: #001A33; color: #FFF; border-top: 2px solid #00C4FF; padding-top: 2rem; padding-bottom: 2rem;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+
+                    <p class="mb-0 small mt-2">Executiva Rute Ester - Proteção Veicular Loovi</p>
+                    <p class="mb-0 small">Email: ruteester.gf@gmail.com</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                    <p class="mb-0 small">"Loovi" é uma plataforma de proteção veicular. Este site pertence à Executiva Rute Ester.</p>
+                    <p class="mb-0 small">&copy; 2025 - Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
