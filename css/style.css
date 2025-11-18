@@ -186,12 +186,20 @@ h1, h2, h3, h4, h5 {
 }
 
 .card-feature i {
-    background: linear-gradient(45deg, var(--cor-destaque-lovi), #007ACC); 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 3.5rem;
-    margin-bottom: 0.5rem;
-}
+            /* Cor sólida de fallback caso o gradiente falhe (SOLUÇÃO MOBILE) */
+            color: var(--cor-destaque-lovi); 
+            
+            /* Gradiente de texto */
+            background: linear-gradient(45deg, var(--cor-destaque-lovi), #007ACC); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            /* Prefixos para maior compatibilidade */
+            background-image: -webkit-linear-gradient(45deg, var(--cor-destaque-lovi), #007ACC);
+            
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
 
 
 /* ---------------------------------------------
