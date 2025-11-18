@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Executiva Rute Ester - Proteção Veicular Loovi</title>
+    <title>Executiva Rute Ester - Representante Oficial Loovi</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
@@ -164,9 +164,17 @@
         }
 
         .card-feature i {
+            /* Cor sólida de fallback caso o gradiente falhe (SOLUÇÃO MOBILE) */
+            color: var(--cor-destaque-lovi); 
+            
+            /* Gradiente de texto */
             background: linear-gradient(45deg, var(--cor-destaque-lovi), #007ACC); 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            
+            /* Prefixos para maior compatibilidade */
+            background-image: -webkit-linear-gradient(45deg, var(--cor-destaque-lovi), #007ACC);
+            
             font-size: 3rem;
             margin-bottom: 0.5rem;
         }
@@ -300,7 +308,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7 text-center text-lg-start">
-                    <h1 class="display-6 fw-bolder hero-title">A Nova Era da <span class="text-destaque">Proteção Veicular</span> Chegou.</h1>
+                    <h1 class="display-6 fw-bolder hero-title">A Nova Era do <span class="text-destaque">Seguro Automotivo</span> Chegou.</h1>
                     <p class="lead my-4 text-muted">Atendimento personalizado e simplificado com a **Executiva Rute Ester**.</p>
                     <p class="lead fw-light">Sua cotação é feita diretamente comigo, sem robôs, com a garantia e qualidade da plataforma Loovi.</p>
                     
@@ -323,7 +331,10 @@
                 </div>
                 <div class="col-lg-7 mt-4 mt-lg-0">
                     <h2 class="fw-bold"><i class="bi bi-person-check-fill text-destaque me-2"></i>Eu sou a Executiva Rute Ester.</h2>
-                    <p class="lead">Sua consultora direta para a proteção veicular inteligente da Loovi.</p>
+                    
+                    <p class="text-destaque fw-bold mb-3 mt-n2">Representante Oficial da Loovi Seguros.</p>
+                    
+                    <p class="lead">Sua consultora direta para o seguro inteligente da Loovi.</p>
                     <p>Meu papel é ser a ponte entre você e a proteção ideal. Esqueça a burocracia das intermediárias tradicionais. Aqui, você tem um contato direto e um serviço totalmente focado em oferecer a melhor experiência Loovi. Confie em quem entende de proteção e de atendimento de excelência.</p>
                     <a href="https://wa.me/5532997656684?text=Rute!%20Gostaria%20de%20saber%20mais%20sobre%20você%20e%20a%20Loovi." class="btn btn-primary mt-3" target="_blank">Fale Diretamente Comigo</a>
                 </div>
@@ -348,12 +359,12 @@
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionCoberturas">
                         <div class="accordion-body">
-                            <p>Cobrimos até 100% do valor do seu carro na tabela FIPE em casos de:*</p>
+                            Cobrimos até 100% do valor do seu carro na tabela FIPE em casos de:
                             <ul>
                                 <li>Roubo</li>
                                 <li>Furto</li>
                             </ul>
-                            <p class="small mt-3"><em>* Seguros garantidos pela LTI Seguros S.A., uma empresa do Grupo Loovi</em></p>
+                            * Seguros garantidos pela LTI Seguros S.A., uma empresa do Grupo Loovi
                         </div>
                     </div>
                 </div>
@@ -366,7 +377,7 @@
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionCoberturas">
                         <div class="accordion-body">
-                            <p>Assistência 24h completa via 0800 em todo o território nacional, contendo:</p>
+                            Assistência 24h completa via 0800 em todo o território nacional, contendo:
                             <ul>
                                 <li>Reboque</li>
                                 <li>Hotel para até 5 pessoas</li>
@@ -591,16 +602,16 @@
     </div>
 </section>
 
-    <footer class="py-4" style="background-color: #001A33; color: #FFF; border-top: 2px solid #00C4FF; padding-top: 2rem; padding-bottom: 2rem;">
+    <footer class="py-4" style="background-color: #001A33; color: #FFF; border-top: 2px solid var(--cor-destaque-lovi); padding-top: 2rem; padding-bottom: 2rem;">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
 
-                    <p class="mb-0 small mt-2">Executiva Rute Ester - Proteção Veicular Loovi</p>
+                    <p class="mb-0 small mt-2">Executiva Rute Ester - Representante Oficial da Loovi</p>
                     <p class="mb-0 small">Email: ruteester.gf@gmail.com</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
-                    <p class="mb-0 small">"Loovi" é uma plataforma de proteção veicular. Este site pertence à Executiva Rute Ester.</p>
+                    <p class="mb-0 small">"Loovi" é uma plataforma de seguros automotivo. Este site pertence à Executiva Rute Ester.</p>
                     <p class="mb-0 small">&copy; 2025 - Todos os direitos reservados.</p>
                 </div>
             </div>
